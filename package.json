@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
-  "author": "Timothy Lam",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
