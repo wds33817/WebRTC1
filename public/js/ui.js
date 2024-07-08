@@ -21,10 +21,7 @@ export const showVideoCallButtons = () => {
   const personalCodeVideoButton = document.getElementById(
     "personal_code_video_button"
   );
-  const strangerVideoButton = document.getElementById("stranger_video_button");
-
   showElement(personalCodeVideoButton);
-  showElement(strangerVideoButton)
 }
 
 export const updateRemoteVideo = (stream) => {
@@ -63,21 +60,6 @@ export const showCallingDialog = (rejectCallHandler) => {
   dialog.appendChild(callingDialog);
 };
 
-export const showNoStrangerAvailableDiolog = () => {
-  const infoDialog = elements.getInfoDialog(
-    "No Stranger available", 
-    "Please try again later"
-  );
-
-  if (infoDialog) {
-    const dialog = document.getElementById("dialog");
-    dialog.appendChild(infoDialog);
-
-    setTimeout(() => {
-      removeAllDialogs();
-    }, [4000]);
-  }
-}
 
 export const showInfoDialog = (preOfferAnswer) => {
   let infoDialog = null;
@@ -120,15 +102,13 @@ export const removeAllDialogs = () => {
 
 export const showCallElements = (callType) => {
   if (
-    callType === constants.callType.CHAT_PERSONAL_CODE || 
-    callType === constants.callType.CHAT_STRANGER
+    callType === constants.callType.CHAT_PERSONAL_CODE
   ) {
     showChatCallElements();
   }
 
   if (
-    callType === constants.callType.VIDEO_PERSONAL_CODE ||
-    callType === constants.callType.VIDEO_STRANGER
+    callType === constants.callType.VIDEO_PERSONAL_CODE
   ) {
     showVideoCallElements();
   }
@@ -235,8 +215,7 @@ export const updateUIAfterHangUp = (callType) => {
 
   //hide the call buttons
   if (
-    callType === constants.callType.VIDEO_PERSONAL_CODE || 
-    callType === constants.callType.VIDEO_STRANGER
+    callType === constants.callType.VIDEO_PERSONAL_CODE
   ) {
       const callButtons = document.getElementById('call_buttons');
       hideElement(callButtons);
@@ -264,14 +243,6 @@ export const updateUIAfterHangUp = (callType) => {
   removeAllDialogs();
 };
 
-// changing status of checkbox
-export const updateStrangerCheckbox = (allowConnections) => {
-  const checkboxCheckImg = document.getElementById("allow_strangers_checkbox_image");
-
-  allowConnections 
-    ? showElement(checkboxCheckImg) 
-    : hideElement(checkboxCheckImg);
-};
 
 // ui helper functions
 

@@ -22,57 +22,6 @@ const configuration = {
 
 
 
-let networkSpeed = 'fast';
-let devicePowerLevel = 'high';
-let deviceTemperature = 'normal';
-
-const checkNetworkSpeed = () => {
-  if (navigator.connection) {
-    const { downlink } = navigator.connection;
-    networkSpeed = downlink > 2 ? 'fast' : 'slow';
-  } else {
-    networkSpeed = 'fast';
-  }
-};
-
-const checkDevicePowerAndThermal = () => {
-  navigator.getBattery().then(function(battery) {
-    devicePowerLevel = battery.level > 0.2 ? 'high' : 'low';
-  });
-
-  deviceTemperature = getDeviceTemperature() < 70 ? 'normal' : 'high';
-};
-
-const getDeviceTemperature = () => {
-  return Math.random() * 100; 
-};
-
-setInterval(checkNetworkSpeed, 5000);
-setInterval(checkDevicePowerAndThermal, 5000);
-
-const adjustStreamingQuality = () => {
-  if (networkSpeed === 'slow' || devicePowerLevel === 'low' || deviceTemperature === 'high') {
-    setStreamingQuality('low');
-  } else {
-    setStreamingQuality('high');
-  }
-};
-
-const setStreamingQuality = (quality) => {
-  const localStream = store.getState().localStream;
-
-  localStream.getVideoTracks().forEach(track => {
-    const constraints = quality === 'high' ? { width: 1280, height: 720 } : { width: 640, height: 360 };
-    track.applyConstraints(constraints).then(() => {
-      console.log(`Set streaming quality to ${quality}`);
-    }).catch(error => {
-      console.error('Error setting streaming quality:', error);
-    });
-  });
-};
-
-setInterval(adjustStreamingQuality, 5000);
-
 
 export const getLocalPreview = () => {
   navigator.mediaDevices
