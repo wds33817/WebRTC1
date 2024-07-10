@@ -40,6 +40,61 @@ html, body {
   border-radius: 15px;
 }
 
+.messenger_container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.messages_container {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.new_message_container {
+   display: flex;
+   align-items: center;
+   margin-right: 20px;
+}
+
+.new_message_container input {
+  flex-grow: 1;
+  margin-right: 10px;
+  height: 40px;
+}
+
+.new_message_container button {
+    height: 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message_left_container {
+    align-self: flex-start;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    max-width: 60%;
+}
+
+.message_right_container {
+    align-self: flex-end;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    max-width: 60%;
+}
+
+
 .personal_code_title_paragraph,
 .personal_code_value_paragraph {
   font-size: 18px;
@@ -183,6 +238,11 @@ html, body {
         height: 70vh; /* Adjust the height as needed */
     }
     .messenger_container {
-        height: 70vh; /* Adjust the height as needed */
+        height: 70vh; 
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        border: 1px solid #ccc;
+        padding: 10px;
     }
 }
